@@ -1,4 +1,4 @@
-import { GlobalStyle } from "../global/globalTheme";
+import { GlobalStyle } from "./global/globalTheme";
 function App() {
   return (
     <div className="App">
