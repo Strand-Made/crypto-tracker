@@ -7,16 +7,22 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
 }
 :root {
-    var(--text-color: #1b1b1b );
-    var(--text-color-2: #848484 );
-    var(--primary-color: #061121);
-    var(--secondary-color: #129dff);
-    var(--background-color: #f8f9fb);
-    var(--success-color:#2bbfa8);
-    var(--error-color: #e86072);
+    --text-color: #1b1b1b;
+    --text-color-2: #848484;
+    --text-color-white: #D1D0D1;
+    --primary-color: #061121;
+    --secondary-color: #129dff;
+    --background-color: #f8f9fb;
+    --success-color:#2bbfa8;
+    --error-color: #e86072;
+}
+html {
+    height: 100%;
+    overflow-x: hidden;
 }
 body {
     font-size: 1rem;
+    background: var(--background-color);
 }
 
 body, button, input, textarea, select {

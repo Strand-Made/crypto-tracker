@@ -1,9 +1,15 @@
 import { GlobalStyle } from "./global/globalTheme";
+import Wrapper from "./layout/Wrapper";
+import Navbar from "./components/navbar/Navbar";
 function App() {
   return (
-    <div className="App">
+    <>
       <GlobalStyle />
-    </div>
+      <Wrapper>
+        <Navbar />
+        <h1>Hello</h1>
+      </Wrapper>
+    </>
   );
 }
 
