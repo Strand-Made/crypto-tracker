@@ -21,6 +21,7 @@ const StyledList = styled.ul`
   height: 100vh;
   width: 0;
   padding: 1rem;
+  z-index: 1;
   transition-property: width;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
