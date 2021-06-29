@@ -1,6 +1,10 @@
 import styled from "styled-components";
-import { useTable } from "react-table";
-
+import { useTable, useSortBy } from "react-table";
+import {
+  RiArrowUpSFill,
+  RiArrowDownSFill,
+  RiArrowUpDownFill,
+} from "react-icons/ri";
 const CryptoTable = styled.table`
   border-spacing: 0;
   color: var(--table-text-color);
@@ -11,6 +15,8 @@ const CryptoTable = styled.table`
     color: var(--error-color);
   }
   .table__symbol {
+    font-size: 0.9rem;
+    color: var(--table-text-color-2);
     text-transform: uppercase;
   }
 
@@ -19,7 +25,7 @@ const CryptoTable = styled.table`
     font-size: 0.7rem;
     font-weight: 400;
     text-transform: uppercase;
-    text-align: start;
+    text-align: left;
   }
   th,
   td {
@@ -41,6 +47,9 @@ const CryptoTable = styled.table`
       }
     }
   }
+  .btn-table-sort {
+    background: none;
+  }
 `;
 
 const Table = ({ columns, data }) => {
@@ -50,24 +59,40 @@ const Table = ({ columns, data }) => {
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({
-    columns,
-    data,
-  });
-
+  } = useTable(
+    {
+      columns,
+      data,
+    },
+    useSortBy
+  );
+  const firstPageRows = rows.slice(0, 50);
   return (
     <CryptoTable {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}> {column.render("Header")}</th>
+              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                {column.render("Header")}
+                <span className="sort-label" aria-label="sort by">
+                  {column.isSorted ? (
+                    column.isSortedDesc ? (
+                      <RiArrowDownSFill />
+                    ) : (
+                      <RiArrowUpSFill />
+                    )
+                  ) : (
+                    ""
+                  )}
+                </span>
+              </th>
             ))}
           </tr>
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {rows.map((row, i) => {
+        {firstPageRows.map((row, i) => {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>

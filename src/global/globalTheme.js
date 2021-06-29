@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 :root {
     --text-color: #1b1b1b;
     --table-text-color: #6d747f;
+    --table-text-color-2: #c5c7cb;
     --text-color-2: #848484;
     --text-color-white: #D1D0D1;
     --primary-color: #061121;

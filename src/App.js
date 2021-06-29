@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useQuery } from "react-query";
 import { GlobalStyle } from "./global/globalTheme";
+import { TiArrowUp, TiArrowDown } from "react-icons/ti";
 import * as api from "./cryptoApi";
 import Wrapper from "./layout/Wrapper";
 import Navbar from "./components/navbar/Navbar";
@@ -49,6 +50,7 @@ function App() {
                 <span
                   className={checkIfNegative === -1 ? "decrease" : "increase"}
                 >
+                  {checkIfNegative === -1 ? <TiArrowDown /> : <TiArrowUp />}
                   {roundedValue}%
                 </span>
               );
@@ -61,6 +63,10 @@ function App() {
           {
             Header: "Market Cap",
             accessor: "market_cap",
+            Cell: ({ cell: { value } }) => {
+              const numberSeparator = value.toLocaleString();
+              return <p>${numberSeparator}</p>;
+            },
           },
           {
             Header: "7D Chart",
@@ -69,6 +75,9 @@ function App() {
           {
             Header: "Trade",
             accessor: "trade",
+            Cell: ({ cell: { value } }) => {
+              return <a>Link</a>;
+            },
           },
         ],
       },
