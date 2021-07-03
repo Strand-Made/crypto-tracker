@@ -26,6 +26,13 @@ function App() {
           },
           {
             Header: "",
+            accessor: "image",
+            Cell: ({ cell: { value } }) => {
+              return <img width={25} src={value} alt="crypto" />;
+            },
+          },
+          {
+            Header: "",
             accessor: "symbol",
             Cell: ({ cell: { value } }) => {
               return <span className="table__symbol"> {value} </span>;
@@ -86,6 +93,7 @@ function App() {
   );
 
   const { data: cryptos, status } = useQuery("cryptos", api.getAllCoins);
+
   if (status === "loading") return <p>Loading....</p>;
   if (status === "error") return <p>Error</p>;
 
@@ -95,8 +103,7 @@ function App() {
       <Wrapper>
         <Container>
           <Navbar />
-          <PricePage />
-          <Table columns={columns} data={cryptos} />
+          <PricePage columns={columns} coins={cryptos} />
         </Container>
       </Wrapper>
     </>

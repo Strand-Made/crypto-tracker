@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import * as api from "../cryptoApi";
 import styled from "styled-components";
 import Search from "../components/search/Search";
+import Table from "../components/table/Table";
 import Card from "../components/card/Card";
 
 const Main = styled.main`
@@ -27,33 +28,40 @@ const ModuleHeader = styled.div`
   }
 `;
 
-const PricePage = () => {
+const PricePage = ({ columns, coins }) => {
   const { data: trending, status } = useQuery("trending", api.getTrending);
-
+  const { data: allCoins } = useQuery("allCoins", api.getListCoins);
   if (status === "loading") return <p>Loading...</p>;
-  if (status === "error") return <p>Error getting price</p>;
+  if (status === "error") return <p>Error has occured</p>;
 
   return (
     <Main>
       <ModuleHeader>
         <h1>Top Movers</h1>
         <div>
-          <Search />
+          <Search data={allCoins} />
         </div>
       </ModuleHeader>
       <CardContainer>
         {trending.coins.map((coin) => {
+          const usdPrice = 0.028;
+          const truePrice = coin.item.price_btc / usdPrice;
+          function roundPrice(x) {
+            return Number.parseFloat(x).toPrecision(2) * 1000;
+          }
+
           return (
             <Card
               key={coin.item.id}
               title={coin.item.name}
               symbol={coin.item.symbol}
-              price={coin.item.price_btc}
+              price={roundPrice(truePrice)}
               image={coin.item.small}
             />
           );
         })}
       </CardContainer>
+      <Table columns={columns} data={coins} />
     </Main>
   );
 };

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { HiOutlineSearch, HiX } from "react-icons/hi";
+import SearchList from "./SearchList";
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -19,6 +20,10 @@ const SearchWrapper = styled.div`
     color: var(--text-color-2);
   }
 
+  .clear-icon {
+    cursor: pointer;
+  }
+
   .search-input {
     outline: none;
     font-size: 1rem;
@@ -29,31 +34,20 @@ const SearchWrapper = styled.div`
   }
 `;
 
-const SearchList = styled.ul`
-  position: absolute;
-  padding: 1rem;
-  background: white;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
-  bottom: -40px;
-  width: 100%;
-  margin-top: 5px;
-`;
-
-const Search = () => {
-  const [list, setList] = useState(false);
-  const { coinSearch, setCoinSearch } = useState("");
-  function clearInput() {
-    setList("");
-  }
-
-  function handleChange(e) {
-    e.preventDefault();
-    if (e.target.value.length >= 1) {
-      setList(true);
-    } else {
-      setList(false);
-    }
-  }
+const Search = ({ data }) => {
+  const [searchTerm, setSearchTerms] = useState("");
+  const handleChange = (event) => {
+    setSearchTerms(event.target.value);
+  };
+  const resetInput = () => {
+    setSearchTerms("");
+  };
+  // filter data on search
+  const results = !searchTerm
+    ? null
+    : data.filter((coin) =>
+        coin.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+      );
 
   return (
     <SearchWrapper>
@@ -65,12 +59,14 @@ const Search = () => {
         className="search-input"
         id="search"
         type="text"
+        value={searchTerm}
         onChange={handleChange}
         placeholder="Search all coins"
-      ></input>
-      {list ? (
+      />
+      {searchTerm ? (
         <>
-          <HiX onClick={clearInput} /> <SearchList />
+          <HiX className="clear-icon" onClick={resetInput} />
+          <SearchList data={results} />
         </>
       ) : null}
     </SearchWrapper>

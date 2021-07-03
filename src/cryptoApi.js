@@ -16,3 +16,6 @@ export const getPrice = (id) =>
 
 export const getAllCoins = () =>
   api.get(`/coins/markets?vs_currency=${currency}`).then((res) => res.data);
+
+export const getListCoins = () =>
+  api.get(`/coins/list`).then((res) => res.data);

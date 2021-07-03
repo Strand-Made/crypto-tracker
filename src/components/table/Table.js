@@ -1,11 +1,8 @@
 import styled from "styled-components";
 import { useTable, useSortBy } from "react-table";
-import {
-  RiArrowUpSFill,
-  RiArrowDownSFill,
-  RiArrowUpDownFill,
-} from "react-icons/ri";
+import { RiArrowUpSFill, RiArrowDownSFill } from "react-icons/ri";
 const CryptoTable = styled.table`
+  width: 100%;
   border-spacing: 0;
   color: var(--table-text-color);
   .increase {

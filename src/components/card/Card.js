@@ -36,12 +36,6 @@ const CardBody = styled.div`
 `;
 
 const Card = ({ title, symbol, price, image }) => {
-  const usdPrice = 0.000029;
-  const truePrice = price / usdPrice;
-  function roundPrice(x) {
-    return Number.parseFloat(x).toPrecision(3);
-  }
-
   return (
     <CryptoCard>
       <CardHeader>
@@ -52,7 +46,7 @@ const Card = ({ title, symbol, price, image }) => {
           {title} <span className="trending__symbol">{symbol}</span>
         </h3>
 
-        <p className="trending__price">${roundPrice(truePrice)}</p>
+        <p className="trending__price">${price}</p>
       </CardBody>
     </CryptoCard>
   );
