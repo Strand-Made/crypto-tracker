@@ -4,7 +4,7 @@ const CryptoCard = styled.article`
   background: white;
   padding: 1rem;
   border-radius: 2px;
-  width: 45%;
+  width: 10rem;
   margin: 5px;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);

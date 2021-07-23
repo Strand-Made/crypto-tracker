@@ -7,7 +7,6 @@ import Wrapper from "./layout/Wrapper";
 import Navbar from "./components/navbar/Navbar";
 import Container from "./layout/Container";
 import PricePage from "./pages/PricePage";
-import Table from "./components/table/Table";
 
 function App() {
   const columns = useMemo(
