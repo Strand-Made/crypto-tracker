@@ -7,6 +7,7 @@ import Wrapper from "./layout/Wrapper";
 import Navbar from "./components/navbar/Navbar";
 import Container from "./layout/Container";
 import PricePage from "./pages/PricePage";
+import Button from "./components/buttons/Button";
 
 function App() {
   const columns = useMemo(
@@ -82,7 +83,7 @@ function App() {
             Header: "Trade",
             accessor: "trade",
             Cell: ({ cell: { value } }) => {
-              return <a>Link</a>;
+              return <Button>Trade</Button>;
             },
           },
         ],

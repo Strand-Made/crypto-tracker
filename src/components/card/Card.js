@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 const CryptoCard = styled.article`
   background: white;
-  padding: 1rem;
+  padding: 2rem 1rem;
   border-radius: 2px;
-  width: 10rem;
+  width: 24%;
   margin: 5px;
   transition: all 0.2s ease-in-out;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);

@@ -13,6 +13,7 @@ const CardContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const ModuleHeader = styled.div`
@@ -43,7 +44,7 @@ const PricePage = ({ columns, coins }) => {
         </div>
       </ModuleHeader>
       <CardContainer>
-        {trending.coins.map((coin) => {
+        {trending.coins.slice(0, 4).map((coin) => {
           const usdPrice = 0.028;
           const truePrice = coin.item.price_btc / usdPrice;
           function roundPrice(x) {

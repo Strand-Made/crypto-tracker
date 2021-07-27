@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { useTable, useSortBy } from "react-table";
-import { RiArrowUpSFill, RiArrowDownSFill } from "react-icons/ri";
+import {
+  RiArrowUpSFill,
+  RiArrowDownSFill,
+  RiArrowDropRightLine,
+} from "react-icons/ri";
+import Button from "../buttons/Button";
 const CryptoTable = styled.table`
   width: 100%;
   border-spacing: 0;
@@ -100,6 +105,10 @@ const Table = ({ columns, data }) => {
           );
         })}
       </tbody>
+
+      <Button secondary>
+        Next 50 <RiArrowDropRightLine size={30} />
+      </Button>
     </CryptoTable>
   );
 };
