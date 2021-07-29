@@ -24,7 +24,9 @@ html {
 }
 body {
     font-size: 1rem;
-    background: var(--background-color);
+    background: ${(props) =>
+      props.dark ? "var(--primary-color)" : "var(--background-color)"};
+      color: ${(props) => (props.dark ? "var(--text-color-white)" : null)}
 }
 
 body, button, input, textarea, select {
